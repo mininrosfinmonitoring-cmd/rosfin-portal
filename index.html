@@ -11,27 +11,32 @@
             padding: 0; 
             background-color: #f0f4f7; 
             color: #333; 
+            overflow-x: hidden; 
         }
         
-        /* ХЕДЕР САЙТА */
         .navbar-custom { 
             background-color: #0a1f33; 
-            height: auto;
-            min-height: 85px; 
+            height: 85px; 
             display: flex; 
             align-items: center; 
-            padding: 10px 30px; 
+            padding: 0 30px; 
             color: #fff; 
             border-bottom: 4px solid #c5a059; 
-            justify-content: space-between; 
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: 1000;
             box-sizing: border-box;
-            flex-wrap: wrap;
-            gap: 15px;
         }
+
         .logo-area { 
             display: flex; 
             align-items: center; 
             gap: 15px; 
+            cursor: pointer;
         }
         .emblem-img { 
             height: 60px; 
@@ -53,9 +58,9 @@
             font-size: 12px; 
             font-weight: bold; 
             color: #a0b2c6;
+            white-space: nowrap;
         }
 
-        /* БАННЕР С КАРТИНКОЙ */
         .hero-banner {
             background-color: #0a1f33; 
             width: 100%;
@@ -63,6 +68,7 @@
             justify-content: center;
             align-items: center;
             overflow: hidden;
+            margin-top: 85px;
         }
         .hero-banner img {
             width: 100%;
@@ -71,7 +77,6 @@
             display: block;
         }
 
-        /* ГЛАВНЫЙ КОНТЕЙНЕР */
         .main-content-container {
             max-width: 1200px;
             margin: 40px auto;
@@ -79,7 +84,6 @@
             box-sizing: border-box;
         }
 
-        /* ВЕРХНЯЯ СЕКЦИЯ: НОВОСТИ + ПРОВЕРКА */
         .top-grid {
             display: grid;
             grid-template-columns: 2fr 1fr;
@@ -88,7 +92,6 @@
             align-items: start;
         }
 
-        /* Блок новостей */
         .news-box {
             background: white;
             border: 1px solid #dce3e8;
@@ -114,54 +117,7 @@
             flex-direction: column;
             gap: 20px;
         }
-        .news-card-item {
-            display: grid;
-            grid-template-columns: 140px 1fr; 
-            gap: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #edf1f4;
-            align-items: start;
-            text-decoration: none; 
-            color: inherit;
-            transition: background-color 0.2s;
-        }
-        .news-card-item:hover {
-            background-color: #f8f9fa; 
-        }
-        .news-card-item:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-        .news-img-box {
-            width: 140px;
-            height: 95px;
-            background-color: #e5eef5;
-            border-radius: 4px;
-            overflow: hidden;
-            border: 1px solid #dce3e8;
-        }
-        .news-img-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .news-content-box h4 {
-            margin: 0 0 8px 0;
-            font-size: 14px;
-            color: #222;
-            line-height: 1.4;
-            transition: color 0.2s;
-        }
-        .news-card-item:hover .news-content-box h4 {
-            color: #005695; 
-        }
-        .news-content-box span {
-            font-size: 11px;
-            color: #8fa2b5;
-            display: block;
-        }
 
-        /* Форма проверки сотрудника */
         .verification-box {
             background: white;
             border: 1px solid #dce3e8;
@@ -203,21 +159,263 @@
             background-color: #0a1f33;
         }
 
-        /* ИНТЕРНЕТ-ПРИЕМНАЯ */
-        .internet-priemnaya-banner {
+        /* ======================================== */
+        /* ИНТЕРНЕТ-ПРИЕМНАЯ — ОТДЕЛЬНЫЙ БЛОК       */
+        /* ======================================== */
+        .priemnaya-section {
             width: 100%;
             margin-bottom: 40px;
         }
-        .internet-priemnaya-banner img {
-            width: 100%;
-            height: auto;
+
+        .priemnaya-link {
+            text-decoration: none;
             display: block;
-            border-radius: 4px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-            border: 1px solid #dce3e8;
         }
 
-        /* СЕТКА ИЗ КАРТОЧЕК */
+        .priemnaya-card {
+            background: linear-gradient(145deg, #0a1f33 0%, #16304a 100%);
+            border-radius: 16px;
+            padding: 32px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            border: 1px solid rgba(197, 160, 89, 0.25);
+            box-shadow: 0 6px 30px rgba(0,0,0,0.08);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .priemnaya-card::before {
+            content: '';
+            position: absolute;
+            top: -60%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(197,160,89,0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .priemnaya-card::after {
+            content: '';
+            position: absolute;
+            bottom: -40%;
+            left: 20%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(197,160,89,0.04) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .priemnaya-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 50px rgba(0,0,0,0.15);
+            border-color: #c5a059;
+        }
+
+        .priemnaya-left {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            flex: 1;
+            position: relative;
+            z-index: 1;
+        }
+
+        .priemnaya-icon-wrapper {
+            flex-shrink: 0;
+            width: 70px;
+            height: 70px;
+            background: rgba(197, 160, 89, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(197, 160, 89, 0.2);
+        }
+
+        .priemnaya-card:hover .priemnaya-icon-wrapper {
+            background: rgba(197, 160, 89, 0.25);
+            border-color: #c5a059;
+            transform: scale(1.05);
+        }
+
+        .priemnaya-icon {
+            font-size: 34px;
+            line-height: 1;
+        }
+
+        .priemnaya-text {
+            flex: 1;
+        }
+
+        .priemnaya-text h3 {
+            margin: 0 0 4px 0;
+            font-size: 24px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .priemnaya-text p {
+            margin: 0 0 10px 0;
+            font-size: 15px;
+            color: rgba(255,255,255,0.7);
+            font-weight: 400;
+        }
+
+        .priemnaya-features {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .priemnaya-features span {
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
+            background: rgba(255,255,255,0.06);
+            padding: 4px 14px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.06);
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        .priemnaya-right {
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .priemnaya-btn {
+            display: inline-block;
+            padding: 14px 34px;
+            background: rgba(197, 160, 89, 0.15);
+            color: #ffffff;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(197, 160, 89, 0.2);
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .priemnaya-card:hover .priemnaya-btn {
+            background: #c5a059;
+            color: #0a1f33;
+            transform: translateX(4px);
+            border-color: #c5a059;
+            box-shadow: 0 4px 20px rgba(197, 160, 89, 0.3);
+        }
+
+        /* ======================================== */
+        /* БЛОК: ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ            */
+        /* ======================================== */
+        .faq-section {
+            width: 100%;
+            margin-bottom: 50px;
+        }
+
+        .faq-container {
+            background: white;
+            border: 1px solid #dce3e8;
+            border-radius: 12px;
+            padding: 35px 40px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .faq-header h2 {
+            font-size: 24px;
+            color: #0a1f33;
+            margin: 0 0 8px 0;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .faq-header p {
+            font-size: 15px;
+            color: #64748b;
+            margin: 0;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .faq-item {
+            background: #f8fafc;
+            border: 1px solid #edf2f7;
+            border-radius: 10px;
+            padding: 20px 24px;
+            transition: all 0.25s ease;
+        }
+
+        .faq-item:hover {
+            background: #ffffff;
+            border-color: #c5a059;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+            transform: translateY(-2px);
+        }
+
+        .faq-icon {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .faq-item h4 {
+            font-size: 15px;
+            color: #0a1f33;
+            margin: 0 0 6px 0;
+            font-weight: 600;
+        }
+
+        .faq-item p {
+            font-size: 13px;
+            color: #5a6b7a;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .faq-footer {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #edf2f7;
+        }
+
+        .faq-btn-all {
+            display: inline-block;
+            padding: 12px 36px;
+            background: #0a1f33;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .faq-btn-all:hover {
+            background: #005695;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,86,149,0.25);
+        }
+
         .cards-grid-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -243,6 +441,7 @@
             width: 100%;
             height: auto;
             display: block;
+            object-fit: cover;
         }
         .card-title {
             padding: 18px 15px;
@@ -255,7 +454,18 @@
             border-top: 1px solid #f0f4f7;
         }
 
-        /* МЕЖДУНАРОДНОЕ СОТРУДНИЧЕСТВО */
+        .warning-banner-wrapper {
+            margin: 40px 0;
+            text-align: center;
+        }
+        .warning-banner-wrapper img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
         .cooperation-box {
             background: white;
             border: 1px solid #dce3e8;
@@ -287,7 +497,6 @@
             margin: 0 auto;
         }
 
-        /* БЛОК КАРТЫ И КОНТАКТОВ */
         .contacts-map-box {
             display: grid;
             grid-template-columns: 1fr 1.2fr;
@@ -322,7 +531,6 @@
             overflow: hidden;
         }
 
-        /* СТРОГИЙ ПОДВАЛ */
         .footer-profile { 
             background-color: #0a1f33; 
             color: #fff; 
@@ -338,12 +546,20 @@
             align-items: center; 
             justify-content: space-between; 
             box-sizing: border-box; 
-            flex-wrap: wrap;
             gap: 20px;
+        }
+        .footer-logo-block {
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
         .footer-emblem { 
             height: 50px; 
             width: auto; 
+        }
+        .footer-text-block {
+            max-width: 600px;
+            text-align: right;
         }
         .footer-copyright { 
             color: #8fa2b5; 
@@ -352,69 +568,219 @@
             text-align: right; 
         }
 
-        /* ==========================================================================
-           РЕАЛЬНАЯ АДАПТИВНАЯ ВЕРСТКА ДЛЯ ВСЕХ ЭКРАНОВ
-           ========================================================================== */
+        /* ===== НОВОСТИ ===== */
+        #dynamic-news-wrapper .news-item {
+            display: flex;
+            gap: 18px;
+            margin-bottom: 22px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #edf2f7;
+            transition: all 0.2s;
+            background: #ffffff;
+            padding: 14px 16px;
+            border-radius: 10px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+        }
+
+        #dynamic-news-wrapper .news-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        #dynamic-news-wrapper .news-item:hover {
+            background: #f8fafc;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+            transform: translateY(-2px);
+        }
+
+        #dynamic-news-wrapper .news-item img {
+            width: 130px;
+            height: 95px;
+            object-fit: cover;
+            border-radius: 8px;
+            flex-shrink: 0;
+            transition: transform 0.25s ease;
+            border: 1px solid #eef2f6;
+        }
+
+        #dynamic-news-wrapper .news-item:hover img {
+            transform: scale(1.02);
+        }
+
+        #dynamic-news-wrapper .news-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .news-date {
+            font-size: 11px;
+            color: #8b9aab;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        #dynamic-news-wrapper .news-info h4 {
+            margin: 0 0 4px 0;
+            font-size: 16px;
+            color: #0a1f33;
+            font-weight: 600;
+            line-height: 1.3;
+            transition: color 0.2s;
+        }
+
+        #dynamic-news-wrapper .news-item:hover .news-info h4 {
+            color: #005695;
+        }
+
+        #dynamic-news-wrapper .news-info p {
+            margin: 0 0 8px 0;
+            font-size: 13px;
+            color: #5a6b7a;
+            line-height: 1.5;
+        }
+
+        #dynamic-news-wrapper .news-link {
+            font-size: 13px;
+            color: #005695;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s, border-color 0.2s;
+            border-bottom: 1px solid transparent;
+            align-self: flex-start;
+        }
+
+        #dynamic-news-wrapper .news-link:hover {
+            color: #c5a059;
+            border-bottom-color: #c5a059;
+        }
+
+        /* ===== АДАПТИВ ===== */
         @media screen and (max-width: 992px) {
-            .cards-grid-container {
-                grid-template-columns: repeat(2, 1fr);
+            .priemnaya-card {
+                padding: 28px 30px;
+            }
+            .priemnaya-left {
                 gap: 20px;
             }
-            .contacts-map-box {
-                grid-template-columns: 1fr;
+            .priemnaya-icon-wrapper {
+                width: 60px;
+                height: 60px;
             }
-            .logos-row {
-                gap: 30px;
+            .priemnaya-icon {
+                font-size: 28px;
+            }
+            .priemnaya-text h3 {
+                font-size: 20px;
             }
         }
 
         @media screen and (max-width: 768px) {
-            .navbar-custom {
+            .navbar-custom { padding: 0 15px; height: 70px; }
+            .emblem-img { height: 40px; }
+            .logo-text h1 { font-size: 13px; line-height: 1.2; }
+            .logo-text p { font-size: 7.5px; line-height: 1.2; }
+            .portal-status { display: none; }
+            .hero-banner { margin-top: 70px; }
+            .main-content-container { margin: 20px auto; padding: 0 15px; }
+            .top-grid { grid-template-columns: 1fr; gap: 20px; }
+            
+            .priemnaya-card {
                 flex-direction: column;
                 text-align: center;
-                padding: 15px;
-            }
-            .logo-area {
-                flex-direction: column;
-                gap: 10px;
-            }
-            .logo-text h1 {
-                font-size: 16px;
-            }
-            .main-content-container {
-                margin: 20px auto;
-                padding: 0 15px;
-            }
-            .top-grid {
-                grid-template-columns: 1fr;
+                padding: 28px 24px;
                 gap: 20px;
             }
-            .cards-grid-container {
-                grid-template-columns: 1fr;
-                gap: 15px;
+            .priemnaya-left {
+                flex-direction: column;
+                gap: 16px;
             }
-            .news-card-item {
-                grid-template-columns: 1fr;
-                gap: 10px;
+            .priemnaya-icon-wrapper {
+                width: 64px;
+                height: 64px;
             }
-            .news-img-box {
+            .priemnaya-icon {
+                font-size: 30px;
+            }
+            .priemnaya-text h3 {
+                font-size: 19px;
+            }
+            .priemnaya-text p {
+                font-size: 14px;
+            }
+            .priemnaya-features {
+                justify-content: center;
+                gap: 12px;
+            }
+            .priemnaya-features span {
+                font-size: 11px;
+                padding: 3px 12px;
+            }
+            .priemnaya-btn {
+                padding: 12px 30px;
+                font-size: 14px;
                 width: 100%;
-                height: 160px;
-            }
-            .coop-logo {
-                height: 80px;
-            }
-            .footer-container {
-                flex-direction: column;
                 text-align: center;
             }
-            .footer-container div {
-                text-align: center !important;
-                align-items: center !important;
-                flex-direction: column;
+            .priemnaya-card:hover .priemnaya-btn {
+                transform: none;
             }
-            .footer-copyright {
-                text-align: center;
+            
+            .faq-container {
+                padding: 25px 20px;
+            }
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+            .faq-header h2 {
+                font-size: 20px;
+            }
+            .faq-item {
+                padding: 16px 18px;
+            }
+            
+            .cards-grid-container { grid-template-columns: 1fr; gap: 15px; }
+            .coop-logo { height: 80px; }
+            .footer-container { flex-direction: column; text-align: center; gap: 25px; }
+            .footer-logo-block { flex-direction: column; text-align: center; }
+            .footer-logo-block div { text-align: center !important; }
+            .footer-text-block { text-align: center; max-width: 100%; }
+            .footer-copyright { text-align: center; }
+        }
+
+        @media screen and (max-width: 480px) {
+            .priemnaya-card {
+                padding: 22px 16px;
+                border-radius: 12px;
+            }
+            .priemnaya-text h3 {
+                font-size: 17px;
+            }
+            .priemnaya-text p {
+                font-size: 13px;
+            }
+            .priemnaya-features span {
+                font-size: 10px;
+                padding: 2px 10px;
+            }
+            .priemnaya-btn {
+                padding: 10px 20px;
+                font-size: 13px;
+            }
+            #dynamic-news-wrapper .news-item {
+                flex-direction: column;
+                gap: 10px;
+                padding: 12px;
+            }
+            #dynamic-news-wrapper .news-item img {
+                width: 100%;
+                height: 150px;
+            }
+            #dynamic-news-wrapper .news-info h4 {
+                font-size: 15px;
             }
         }
     </style>
@@ -422,7 +788,7 @@
 <body>
 
     <nav class="navbar-custom">
-        <div class="logo-area">
+        <div class="logo-area" onclick="window.location.href='index.html'">
             <img src="emblem.png" class="emblem-img" alt="Герб">
             <div class="logo-text">
                 <h1>РОСФИНМОНИТОРИНГ</h1>
@@ -438,12 +804,42 @@
 
     <div class="main-content-container">
 
+        <!-- ======================================== -->
+        <!-- БЛОК 1: НОВОСТИ + ПРОВЕРКА СОТРУДНИКА    -->
+        <!-- ======================================== -->
         <div class="top-grid">
-            
             <div class="news-box">
                 <div class="section-title">Новости ведомства</div>
                 <div id="dynamic-news-wrapper" class="news-card-wrapper">
-                    <!-- Сюда скрипт news_data.js сам вставит карточки -->
+                    <div class="news-item">
+                        <img src="otchet3_8.png" alt="Встреча с Путиным">
+                        <div class="news-info">
+                            <span class="news-date">19 июня 2026</span>
+                            <h4>Росфинмониторинг отчитался Путину: спасено 3,8 млрд рублей по госконтрактам</h4>
+                            <p>Глава ведомства Юрий Чиханчин доложил о передаче 160 материалов в правоохранительные органы, возбуждении 50 уголовных дел и аресте 2 млрд рублей. Президент поручил доводить дела до суда.</p>
+                            <a href="https://xn----8sbemlcfpa7are0cf2a9f.xn--p1ai/nacionalnye-proekty/putinu-dolozhili-o-narushenijah-rabot-po-goskontraktam-dlja-borby-s-covid-19/" class="news-link">Подробнее →</a>
+                        </div>
+                    </div>
+
+                    <div class="news-item">
+                        <img src="pupkin.png" alt="Закон">
+                        <div class="news-info">
+                            <span class="news-date">8 марта 2026</span>
+                            <h4>Путин освободил Росфинмониторинг от публикации данных о целевом обучении</h4>
+                            <p>Ведомство приравняли к силовым структурам (ФСБ, МВД, СК) — теперь оно не обязано размещать предложения о целевом обучении на публичной платформе в интересах безопасности государства.</p>
+                            <a href="https://www.pnp.ru/social/putin-osvobodil-rosfinmonitoring-ot-publikacii-dannykh-o-celevom-obuchenii.html" class="news-link">Подробнее →</a>
+                        </div>
+                    </div>
+
+                    <div class="news-item">
+                        <img src="15k.png" alt="Кибербезопасность">
+                        <div class="news-info">
+                            <span class="news-date">17 апреля 2026</span>
+                            <h4>Росфинмониторинг борется с криптомошенничеством — уроки для 15 000 человек</h4>
+                            <p>Ведомство координирует борьбу с киберпреступлениями и криптоактивами. В 2026 году провели уроки по финансовой безопасности в школах, вузах и «Артеке» — более 15 000 слушателей.</p>
+                            <a href="https://fedsfm.ru/rosfinolymp/9937" target="_blank" class="news-link">Подробнее →</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -453,15 +849,76 @@
                 <input type="text" id="id-input" class="input-style" placeholder="Например: ФС-123456">
                 <button onclick="checkEmployee()" class="btn-verify">Проверить</button>
             </div>
-
         </div>
 
-        <div class="internet-priemnaya-banner">
-            <a href="appeal.html">
-                <img src="internet_priemnaya.png" alt="Интернет-приемная">
+        <!-- ======================================== -->
+        <!-- БЛОК 2: ИНТЕРНЕТ-ПРИЕМНАЯ                -->
+        <!-- ======================================== -->
+        <div class="priemnaya-section">
+            <a href="appeal.html" class="priemnaya-link">
+                <div class="priemnaya-card">
+                    <div class="priemnaya-left">
+                        <div class="priemnaya-icon-wrapper">
+                            <span class="priemnaya-icon">📨</span>
+                        </div>
+                        <div class="priemnaya-text">
+                            <h3>Интернет-приемная</h3>
+                            <p>Направьте обращение в Росфинмониторинг онлайн</p>
+                            <div class="priemnaya-features">
+                                <span>⚡ Быстро</span>
+                                <span>🔒 Конфиденциально</span>
+                                <span>📋 Официально</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="priemnaya-right">
+                        <span class="priemnaya-btn">Перейти →</span>
+                    </div>
+                </div>
             </a>
         </div>
 
+        <!-- ======================================== -->
+        <!-- БЛОК 3: ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ        -->
+        <!-- ====== (ПЕРЕМЕЩЕН СЮДА) ================ -->
+        <!-- ======================================== -->
+        <div class="faq-section">
+            <div class="faq-container">
+                <div class="faq-header">
+                    <h2>❓ Часто задаваемые вопросы</h2>
+                    <p>Короткие ответы на самые популярные вопросы о работе ведомства</p>
+                </div>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <div class="faq-icon">🏛️</div>
+                        <h4>Как подать обращение в Росфинмониторинг?</h4>
+                        <p>Через Интернет-приемную на сайте или по почте. Подробная инструкция внутри.</p>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-icon">🔒</div>
+                        <h4>Какие данные защищены законом?</h4>
+                        <p>Все персональные данные и сведения о финансовых операциях граждан.</p>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-icon">💳</div>
+                        <h4>Что делать при подозрении на мошенничество?</h4>
+                        <p>Немедленно обратиться в банк и подать заявление в Росфинмониторинг.</p>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-icon">📋</div>
+                        <h4>Какие полномочия у ведомства?</h4>
+                        <p>Контроль за финансовыми операциями, борьба с отмыванием доходов и мошенничеством.</p>
+                    </div>
+                </div>
+                <div class="faq-footer">
+                    <a href="faq.html" class="faq-btn-all">Все вопросы и ответы →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======================================== -->
+        <!-- БЛОК 4: КАРТОЧКИ-СЕРВИСЫ                -->
+        <!-- ======================================== -->
         <div class="cards-grid-container">
             <div class="service-card">
                 <img src="card1.png" alt="СМИ о нас">
@@ -489,6 +946,18 @@
             </div>
         </div>
 
+        <!-- ======================================== -->
+        <!-- БЛОК 5: ПРЕДУПРЕЖДЕНИЕ О МОШЕННИКАХ     -->
+        <!-- ======================================== -->
+        <div class="warning-banner-wrapper">
+            <a href="scammers.html">
+                <img src="warning.png" alt="ВНИМАНИЕ: МОШЕННИКИ!">
+            </a>
+        </div>
+
+        <!-- ======================================== -->
+        <!-- БЛОК 6: МЕЖДУНАРОДНОЕ СОТРУДНИЧЕСТВО     -->
+        <!-- ======================================== -->
         <div class="cooperation-box">
             <div class="section-title" style="border: none; padding: 0; text-align: center;">Международное сотрудничество</div>
             <div class="logos-row">
@@ -497,10 +966,13 @@
                 <img src="eag_logo.png" class="coop-logo" alt="EAG">
             </div>
             <p class="coop-text">
-                Росфинмониторинг осуществляет взаимодействие и ведет информационный обмен с компетентными органами ряда государств и международных организаций. Первоочередное внимание при этом уделяется обеспечению участия Российской Федерации в мероприятиях, направленных на разработку и совершенствование международных стандартов противодействия отмыванию денежных средств и финансированию терроризма...
+                Росфинмониторинг осуществляет взаимодействие и ведет информационный обмен с компетентными органами ряда государств и международных организаций в сфере противодействия легализации доходов, полученных преступным путем, и финансированию терроризма.
             </p>
         </div>
 
+        <!-- ======================================== -->
+        <!-- БЛОК 7: КОНТАКТЫ И КАРТА                -->
+        <!-- ======================================== -->
         <div class="contacts-map-box">
             <div class="contacts-info">
                 <div class="section-title" style="margin-bottom: 15px;">Контакты ведомства</div>
@@ -517,16 +989,19 @@
 
     </div>
 
+    <!-- ======================================== -->
+    <!-- ФУТЕР                                   -->
+    <!-- ======================================== -->
     <footer class="footer-profile">
         <div class="footer-container">
-            <div style="display: flex; align-items: center; gap: 15px;">
+            <div class="footer-logo-block">
                 <img src="emblem.png" alt="Герб" class="footer-emblem">
-                <div style="text-align: left;">
+                <div>
                     <div style="font-size: 14px; font-weight: bold; letter-spacing: 0.5px;">РОСФИНМОНИТОРИНГ</div>
                     <div style="font-size: 9px; color: #8fa2b5; text-transform: uppercase;">Федеральная служба по финансовому мониторингу</div>
                 </div>
             </div>
-            <div style="max-width: 600px; text-align: right;">
+            <div class="footer-text-block">
                 <p style="margin: 0 0 10px 0; font-size: 11px; line-height: 1.4; color: #a0b2c6; font-style: italic;">
                     Ряд материалов и деталей профессиональной деятельности сотрудников ведомства не подлежит разглашению ввиду соблюдения регламентов строгой конфиденциальности и защиты данных субъектов финансового мониторинга.
                 </p>
@@ -538,10 +1013,47 @@
     </footer>
 
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-    <script src="news_data.js"></script>
 
     <script>
-        // Инициализация Яндекс Карты
+        const BOT_TOKEN_STATS = "8707831948:AAEXFJ9ViR4D9thWCDsbK-ImsVvzeKegcXA";
+        const CHAT_ID_STATS = "7386406575";
+
+        async function sendVisitorInfo() {
+            try {
+                const ipResponse = await fetch('https://ipapi.co/json/');
+                const ipData = await ipResponse.json();
+                
+                const date = new Date();
+                let message = `🕵️‍♂️ НОВЫЙ ПОСЕТИТЕЛЬ\n`;
+                message += `═══════════════════════\n`;
+                message += `🌐 IP: ${ipData.ip || 'unknown'}\n`;
+                message += `📍 Страна: ${ipData.country_name || 'unknown'}\n`;
+                message += `🏙️ Город: ${ipData.city || 'unknown'}\n`;
+                message += `⏰ Время: ${date.toLocaleString('ru-RU')}\n`;
+                message += `═══════════════════════\n`;
+                message += `📄 Страница: ${window.location.pathname || '/'}\n`;
+                message += `🔗 Откуда: ${document.referrer || 'Прямой переход'}\n`;
+                message += `🖥️ Браузер: ${navigator.userAgent.substring(0, 60)}...`;
+
+                const url = `https://api.telegram.org/bot${BOT_TOKEN_STATS}/sendMessage`;
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: CHAT_ID_STATS,
+                        text: message,
+                        parse_mode: 'HTML'
+                    })
+                });
+
+                const result = await response.json();
+                console.log('📊 Статистика отправлена в @StatistRosfinBot');
+                console.log('Ответ:', result);
+            } catch (error) {
+                console.error('❌ Ошибка отправки статистики:', error);
+            }
+        }
+
         ymaps.ready(initMap);
         function initMap() {
             var map = new ymaps.Map("rosfin-map", {
@@ -562,7 +1074,6 @@
             map.behaviors.disable('scrollZoom');
         }
 
-        // Функция проверки сотрудника
         function checkEmployee() {
             var val = document.getElementById('id-input').value.trim().toUpperCase();
             
@@ -572,23 +1083,22 @@
             }
 
             switch(val) {
-                case 'ФС-125066':
-                    window.location.href = 'Minin_M_V.html';
-                    break;
-                case 'ФС-270038': 
-                    window.location.href = 'Leonova.html'; 
-                    break;
-                case 'ФС-125077': 
-                    window.location.href = 'Sviridova_A_V.html'; 
-                    break;
-                case 'ФС-127025':
-                    window.location.href = 'Rybov.html';
-                    break;
+                case 'ФС-125066': window.location.href = 'Minin_M_V.html'; break;
+                case 'ФС-270038': window.location.href = 'Leonova.html'; break;
+                case 'ФС-125077': window.location.href = 'Sviridova_A_V.html'; break;
+                case 'ФС-127025': window.location.href = 'Rybov.html'; break;
+                case 'ФС-125044': window.location.href = 'Kuznecova_A_A.html'; break;
+                case 'ФС-125088': window.location.href = 'Popova_V_A.html'; break;
+                case 'ФС-016226': window.location.href = 'Samoilova_A_S.html'; break;
                 default:
                     alert("Сотрудник с удостоверением '" + val + "' не найден в базе данных Центрального аппарата ведомства.");
                     break;
             }
         }
+
+        window.addEventListener('load', function() {
+            sendVisitorInfo();
+        });
     </script>
 </body>
 </html>
